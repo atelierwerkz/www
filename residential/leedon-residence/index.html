@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atelierwerkz</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script type="module" src="https://cdn.ampproject.org/bento.mjs" crossorigin="anonymous"></script>
+    <script nomodule src="https://cdn.ampproject.org/bento.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://cdn.ampproject.org/v0/bento-base-carousel-1.0.mjs" crossorigin="anonymous"></script>
+    <script nomodule src="https://cdn.ampproject.org/v0/bento-base-carousel-1.0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.ampproject.org/v0/bento-base-carousel-1.0.css" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.ampproject.org/v0/bento-lightbox-gallery-1.0.css">
+    <script type="module" async src="https://cdn.ampproject.org/v0/bento-lightbox-gallery-1.0.mjs"></script>
+    <script nomodule async src="https://cdn.ampproject.org/v0/bento-lightbox-gallery-1.0.js"></script>
+
+    <style>
+      body {
+	  font-family: 'Nunito', sans-serif;
+      }
+
+      .site-header {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  padding: 1rem 2rem;
+	  z-index: 100;n
+
+	  color: #000; 
+      }
+
+      .site-logo {
+	  font-size: 2rem;
+	  font-weight: 300;
+	  text-transform: uppercase;
+      }
+
+      .site-header a {
+	  color: inherit;
+	  text-decoration: none;
+      }
+
+      .site-header nav {
+	  display: block;
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+      }
+
+      .site-navbar {
+	  padding-left: 0;
+	  margin-bottom: 0;
+	  list-style-type: none;
+      }
+
+      .site-navbar__item {
+	  position: relative;
+      }
+
+      .site-navbar__item:hover .site-navbar__dropdown,
+      .site-navbar__item:focus .site-navbar__dropdown {
+	  display: block;
+      }
+
+      .site-navbar__dropdown {
+	  min-width: 12rem;
+	  list-style-type: none;
+      }
+
+      .site-navbar__dropdown-item {
+	  
+      }
+
+      .site-sidebar-backdrop {
+	  display: none;
+      }
+
+      #carousel--major {
+	  height: 100vh;
+      }
+
+      #carousel--major .carousel-item {
+	  height: 100vh;
+      }
+
+      #carousel--major .carousel-item img {
+	  height: 100vh;
+	  object-fit: cover;
+      }
+
+      #carousel--major .carousel-caption {
+	  bottom: 2rem;
+	  left: 2rem;
+	  right: auto;
+	  padding: .5rem 1rem;
+	  display: inline-block;
+	  letter-spacing: 0.2rem;
+	  text-align: left;
+	  text-transform: uppercase;
+	  background-color: #111;
+	  color: #fff;
+	  width: auto;
+      }
+
+      @media (min-width: 920px) {
+	  .site-sidebar-toggler {
+	      display: none
+	  }
+
+	  .site-navbar {
+	      display: flex;
+	      justify-content: space-between;
+	  }
+
+	  .site-navbar__dropdown {
+	      position: absolute;
+	      top: 100%;
+	      padding: 1rem;
+	      min-width: 12rem;
+	      background-color: #111;
+	      color: #fff;
+	      display: none;
+	  }
+
+	  .site-navbar__item {
+	      padding: .5rem;
+	  }
+      }
+
+      @media (max-width: 920px) {
+	  .site-sidebar-toggler {
+	      cursor: pointer;
+	  }
+	  
+	  .site-navbar {
+	      position: fixed;
+	      top: 0;
+	      right: 0;
+	      transform: translateX(100%);
+	      bottom: 0;
+	      padding: 2rem 0;
+	      background-color: #000;
+	      color: #fff;
+	      z-index: 3;
+	      transition: .5s transform;
+	  }
+
+	  .site-navbar.active {
+	      transform: translateX(0);
+	  }
+
+	  .site-sidebar-backdrop.active {
+	      position: fixed;
+	      top: 0;
+	      bottom: 0;
+	      left: 0;
+	      right: 0;
+	      display: flex;
+	      justify-content: center;
+	      align-items: center;
+	      z-index: 2;
+	      background-color: #111;
+	      opacity: 0.5;
+	      cursor: pointer;
+	  }
+	  
+	  .site-navbar__dropdown {
+	      margin: 0 -1rem;
+	  }
+
+	  .site-navbar__item {
+	      padding: 1rem 2rem;
+	  }
+
+	  .site-navbar__dropdown-item {
+	      padding: .25rem 0;
+	  }
+	  
+	  #carousel--major .carousel-caption {
+	      text-align: left;
+	      left: 0;
+	      bottom: 0;
+	      width: 100%;
+	  }
+      }
+
+      .carousel__folder-name {
+	  color: #8c8c8c;
+      }
+
+      bento-base-carousel {
+	  height: 500px;
+	  max-height: 50vh;
+	  margin-top: 20vh;
+      }
+
+      bento-base-carousel img {
+	  height: 100%;
+	  object-fit: contain;
+	  width: 100%;
+      }
+
+      .bento-wrapper {
+	  height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-sidebar-backdrop" role="button">Close</div>
+    <div style="position:relative; z-index: 1000;"><bento-lightbox-gallery></bento-lightbox-gallery></div>
+    
+    <header class="site-header">
+      <nav>
+	<span class="site-logo">
+	  <a href="/">Atelierwerkz</a>
+	</span>
+
+	<span class="site-sidebar-toggler" role="button">menu</span>
+	
+	<ul class="site-navbar">
+	  <li class="site-navbar__item"><a href="/residential">Residential</a>
+	    <ul class="site-navbar__dropdown">
+	      <li class="site-navbar__dropdown-item"><a href="/residential/leedon-residence" aria-current="true">Leedon Residence</a></li>
+	      <li class="site-navbar__dropdown-item"><a href="/residential/gw-1">GW 1</a></li>
+	      <li class="site-navbar__dropdown-item"><a href="/residential/gw-2">GW 2</a></li>
+	      <li class="site-navbar__dropdown-item"><a href="/residential/gw-3">GW 3</a></li>
+	    </ul>
+	  </li>
+	  <li class="site-navbar__item">Commercial
+	    <ul class="site-navbar__dropdown">
+	      <li class="site-navbar__dropdown-item"><a href="/commercial/office-1">Office 1</a></li>
+	      <li class="site-navbar__dropdown-item"><a href="/commercial/office-2">Office 2</a></li>
+	    </ul>
+	  </li>
+	  <li class="site-navbar__item"><a href="/about">About</a></li>
+	  <li class="site-navbar__item"><a href="/contact">Contact</a></li>
+	</ul>
+      </nav>
+    </header>
+    
+    <div class="bento-wrapper">
+      <bento-base-carousel mixed-length="false" snap-align="start">
+	<img src="/static/images/leedon-residence-1.jpg" lightbox>
+	<img src="/static/images/leedon-residence-2.jpg" lightbox>
+	<img src="/static/images/leedon-residence-3.jpg" lightbox>
+	<img src="/static/images/leedon-residence-5.jpg" lightbox>
+	<img src="/static/images/leedon-residence-6.jpg" lightbox>
+	<img src="/static/images/leedon-residence-7.jpg" lightbox>
+	<img src="/static/images/leedon-residence-9.jpg" lightbox>
+      </bento-base-carousel>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+      const toggler = document.getElementsByClassName('site-sidebar-toggler')[0];
+      const sidebar = document.getElementsByClassName('site-navbar')[0];
+      const sidebarBackdrop = document.getElementsByClassName('site-sidebar-backdrop')[0];
+
+      const toggleHandler = () => {
+	  sidebar.classList.toggle('active');
+	  sidebarBackdrop.classList.toggle('active');
+      }
+
+      toggler.addEventListener('click', toggleHandler);
+      sidebarBackdrop.addEventListener('click', toggleHandler);
+    </script>
+  </body>
+</html>
